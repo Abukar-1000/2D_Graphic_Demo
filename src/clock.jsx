@@ -3,15 +3,97 @@
 */
 
 import { React, useEffect } from "react"
+import ClockTime from "./clockTime";
 
 function testDraw(con){
     con.fillStyle = "red";
     con.font = "20pt sans-serif";
-    con.fillText("Canvas Rocks!", 200, 300);
+    con.fillText("Canvas Rocks!", 100, 140);
 }
 
+function draw1(con, offset){
+    con.fillStyle = "red";
+    con.strokeStyle = "red";
+    con.lineWidth = "3";
 
+    // top part    
+    con.beginPath();
+    con.moveTo(offset + 345, 140);
+    con.lineTo(offset + 440, 140);
+    con.lineTo(offset + 440, 160);
+    con.lineTo(offset + 345, 160);
+    con.closePath();
+    con.stroke();
+
+    // top part
+    con.beginPath();
+    con.moveTo(offset + 420, 170);
+    con.lineTo(offset + 420, 255);
+    con.lineTo(offset + 440, 255);
+    con.lineTo(offset + 440, 170);
+    con.closePath();
+    con.stroke();
+
+
+    // top part
+    con.beginPath();
+    con.moveTo(offset + 325, 140);
+    con.lineTo(offset + 325, 250);
+    con.lineTo(offset + 345, 235);
+    con.lineTo(offset + 345, 140);
+    con.closePath();
+    con.stroke();
+
+    // middle part
+    // con.beginPath();
+    // con.moveTo(offset + 325, 255);
+    // con.lineTo(offset + 350, 245);
+    // con.lineTo(offset + 440, 245);
+    // con.lineTo(offset + 440, 265);
+    // con.lineTo(offset + 350, 265);
+    // con.closePath();
+    // con.stroke();
+
+    // bottom part
+    con.beginPath();
+    con.moveTo(offset + 420, 275);
+    con.lineTo(offset + 420, 380);
+    con.lineTo(offset + 440, 365);
+    con.lineTo(offset + 440, 275);
+    con.closePath();
+    con.stroke();
+
+    // linking bottom part
+    con.beginPath();
+    con.moveTo(offset + 325, 275);
+    con.lineTo(offset + 348, 275);
+    con.lineTo(offset + 348, 363);
+    con.lineTo(offset + 325, 363);
+    con.closePath();
+    con.stroke();
+
+
+    // bottom part
+    con.beginPath();
+    con.moveTo(offset + 325, 370);
+    con.lineTo(offset + 410, 370);
+    con.lineTo(offset + 410, 390);
+    con.lineTo(offset + 335, 390);
+    con.closePath();
+    con.stroke();
+
+    // bar part
+    // con.beginPath();
+    // con.moveTo(offset + 420, 140);
+    // con.lineTo(offset + 450, 140);
+    // con.lineTo(offset + 450, 390);
+    // con.lineTo(offset + 420, 390);
+    // con.closePath();
+    // con.stroke();
+}
 function Clock(props){
+
+    let generator = new ClockTime();
 
     const drawClockImg = () =>{
         let clock = document.getElementById("clockCanvas");
@@ -26,6 +108,9 @@ function Clock(props){
         let clock = document.getElementById("clockCanvas");
         let con = clock.getContext("2d");
         testDraw(con);
+        draw1(con, 0);
+        generator.drawTime();
+
         drawClockImg();
         // if the page gets reloaded, then reload the image as {disply: none} removes it from the dom, which wont let me query it after
         // going to remove the .hidden so I can query for the image
@@ -39,6 +124,8 @@ function Clock(props){
         window.onload = e => {
             drawClockImg();
         }
+
+
     })
     return <div className="clockDiv">
         <img src="clockBaseImg.png" className="clockImage" alt="clock image"/>
