@@ -4,6 +4,7 @@
 /*
     Going to take clock image canvas element in the constructor.
     With this it will draw the current time onto the clock image canvas.
+    I must say the the purpose of the clock is to act like a timer for the UI.
     to handle all the various x positions a digit can take on the clock, we will pass an offset perameter.
         This allows us to just create the method once, and space them out latter using the offset
     Will also contain the date as text, and will add it to the clock canvas as well. 
@@ -461,11 +462,24 @@ class ClockTime {
         this.#context.stroke();
     }
 
+    getTimeDifference(startTime){
+        const oneSecond = 1000;
+        let date = new Date();
+        let elapsed = (date.getTime() - startTime) / oneSecond;
+        return elapsed;
+    }
     // function that returns the appropriet numbers to display
     requiredFunctions
     drawTime(){
         let date = new Date();
-        console.log(date.toLocaleTimeString())
+        let elapsed;
+        setTimeout(() => {
+            console.log([
+                date.toLocaleTimeString(),
+                date.toLocaleDateString(),
+                this.getTimeDifference(date.getTime())
+            ])
+        }, 5000);
     }
 }
 

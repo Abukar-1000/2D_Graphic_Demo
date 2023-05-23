@@ -91,6 +91,20 @@ function draw1(con, offset){
     // con.closePath();
     // con.stroke();
 }
+
+function drawDevider(con, offset){
+    con.fillStyle = "red";
+    con.strokeStyle = "red";
+    con.lineWidth = "3";
+
+    con.beginPath();
+    con.moveTo(offset + 345, 140);
+    con.lineTo(offset + 440, 140);
+    con.lineTo(offset + 440, 160);
+    con.lineTo(offset + 345, 160);
+    con.closePath();
+    con.stroke();
+}
 function Clock(props){
 
     let generator = new ClockTime();
