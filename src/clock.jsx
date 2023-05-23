@@ -21,33 +21,34 @@ function Clock(props){
         intervalID: null
     });
 
-    // handles timer count up
-    const countUp = () => {
-
-    }
+    
     // callback function that handles clock interaction
-    const startOrStopClock = event => {
+    let startOrStopClock = event => {
         const oneSecond = 1000;
 
         if (state.btnText === "Start Timer"){
-            updateState({
-                btnText: "Stop Timer",
-                buttonStyle: "btn btn-lg btn-outline-danger"
+            updateState(prevState => {
+                return {
+                    btnText: "Stop Timer",
+                    buttonStyle: "btn btn-lg btn-outline-danger",
+                    elapsedSeconds: prevState.elapsedSeconds,
+                    intervalID: prevState.intervalID
+                }
             })
 
             // start timer
-            state.intervalID = setInterval(() => {
-                state.elapsedSeconds += 1;
-            }, oneSecond);
 
         } else {
-            updateState({
-                btnText: "Start Timer",
-                buttonStyle: "btn btn-lg btn-outline-success"
+            updateState(prevState => {
+                clearInterval(prevState.intervalID);    
+                return {
+                    btnText: "Start Timer",
+                    buttonStyle: "btn btn-lg btn-outline-success",
+                    elapsedSeconds: 0,
+                    intervalID: null
+                }   
             })
             // stop timer
-            clearInterval(state.intervalID);
-            state.intervalID = null;
         }
 
     }
@@ -65,13 +66,47 @@ function Clock(props){
     useEffect(() => {
         let clock = document.getElementById("clockCanvas");
         let con = clock.getContext("2d");
-
+        let intervalId = null;
         let generator = new ClockTime(con);
 
         // graphic to divide the clock into 2 regions 
         // drawDevider(con)
         generator.drawTime(state.elapsedSeconds);
         drawClockImg();
+        
+        // handles timer count up
+        const countUp = () => {
+            if (state.btnText === "Start Timer"){
+                // state.intervalID = null;
+
+                updateState(prevState => {
+                    clearInterval(prevState.intervalID);
+                    return {
+                        btnText: prevState.btnText,
+                        buttonStyle: "btn btn-lg btn-outline-danger",
+                        elapsedSeconds: state.elapsedSeconds,
+                        intervalID: null
+                    }
+                })
+            } else {
+                updateState(prevState => {
+                    generator.drawTime(prevState.elapsedSeconds + 1);
+                    return {
+                        btnText: prevState.btnText,
+                        buttonStyle: prevState.buttonStyle,
+                        intervalID: prevState.intervalID,
+                        elapsedSeconds: prevState.elapsedSeconds + 1
+                    }
+                });
+                console.log(state)
+            }
+        }
+
+
+        if (state.btnText === "Stop Timer"){
+            state.intervalID = setInterval(countUp, 1000)
+        }
+
         // if the page gets reloaded, then reload the image as {disply: none} removes it from the dom, which wont let me query it after
         // going to remove the .hidden so I can query for the image
         window.onunload = (e) => {
@@ -86,8 +121,8 @@ function Clock(props){
             drawClockImg();
         }
 
-
-    })
+        console.log(state.btnText, state.elapsedSeconds)
+    }, [state.btnText])
 
 
     return <div className="clockDiv">
