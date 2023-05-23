@@ -13,17 +13,26 @@
 class ClockTime {
 
     #context = null;
+    #currentNumber = "0000";
+    #dateObj;
     constructor(contextObj){
         this.#context = contextObj;
+        this.#dateObj = new Date();
+
+        // initialize the context style
+        this.#context.fillStyle = "red";
+        this.#context.strokeStyle = "red";
+        this.#context.lineWidth = "3";
+        this.#context.font = "20pt sans-serif";
+
+        this.#drawDivider();
+        this.#writeCurrentDate();
     }
     
     // draws the number 1 on the canvas
     #draw1(offset){
         // top half
         this.#context.beginPath();
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
         this.#context.moveTo(offset + 350, 140);
         this.#context.lineTo(offset + 330, 180);
         this.#context.lineTo(offset + 330, 260);
@@ -44,9 +53,6 @@ class ClockTime {
     #draw2(offset){
         // top part
         this.#context.beginPath();
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
         this.#context.moveTo(offset + 330, 160);
         this.#context.lineTo(offset + 350, 140);
         this.#context.lineTo(offset + 410, 140);
@@ -73,9 +79,6 @@ class ClockTime {
     #draw3(offset){
         // top part
         this.#context.beginPath();
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
         this.#context.moveTo(offset + 330, 160);
         this.#context.lineTo(offset + 350, 140);
         this.#context.lineTo(offset + 410, 140);
@@ -113,9 +116,6 @@ class ClockTime {
 
     #draw4(offset){
         this.#context.beginPath();
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
         this.#context.moveTo(offset + 325, 140);
         this.#context.lineTo(offset + 325, 250);
         this.#context.lineTo(offset + 345, 235);
@@ -144,9 +144,6 @@ class ClockTime {
     }
 
     #draw5(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -195,9 +192,6 @@ class ClockTime {
     }
 
     #draw6(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -245,9 +239,6 @@ class ClockTime {
     }
 
     #draw7(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -278,9 +269,6 @@ class ClockTime {
     }
 
     #draw8(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -350,9 +338,6 @@ class ClockTime {
     }
 
     #draw9(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -403,9 +388,6 @@ class ClockTime {
     }
 
     #draw0(offset){
-        this.#context.fillStyle = "red";
-        this.#context.strokeStyle = "red";
-        this.#context.lineWidth = "3";
 
         // top part    
         this.#context.beginPath();
@@ -462,17 +444,42 @@ class ClockTime {
         this.#context.stroke();
     }
 
+    #drawDivider(){
+
+        // first dimond
+        this.#context.beginPath();
+        this.#context.moveTo(700, 180);
+        this.#context.lineTo(680, 200);
+        this.#context.lineTo(700, 220);
+        this.#context.lineTo(720, 200);
+        this.#context.closePath();
+        this.#context.stroke();
+
+        // second dimond
+        this.#context.beginPath();
+        this.#context.moveTo(700, 280);
+        this.#context.lineTo(680, 300);
+        this.#context.lineTo(700, 320);
+        this.#context.lineTo(720, 300);
+        this.#context.closePath();
+        this.#context.stroke();
+    }
+
+    #writeCurrentDate(){
+        let currentDate = this.#dateObj.toLocaleDateString();
+        this.#context.fillText(currentDate, 100, 140);
+    }
     getTimeDifference(startTime){
         const oneSecond = 1000;
         let date = new Date();
         let elapsed = (date.getTime() - startTime) / oneSecond;
         return elapsed;
     }
+
     // function that returns the appropriet numbers to display
     requiredFunctions
     drawTime(){
         let date = new Date();
-        let elapsed;
         setTimeout(() => {
             console.log([
                 date.toLocaleTimeString(),

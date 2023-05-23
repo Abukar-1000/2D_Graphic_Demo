@@ -92,22 +92,33 @@ function draw1(con, offset){
     // con.stroke();
 }
 
-function drawDevider(con, offset){
+function drawDevider(con){
     con.fillStyle = "red";
     con.strokeStyle = "red";
     con.lineWidth = "3";
 
+    // first dimond
     con.beginPath();
-    con.moveTo(offset + 345, 140);
-    con.lineTo(offset + 440, 140);
-    con.lineTo(offset + 440, 160);
-    con.lineTo(offset + 345, 160);
+    con.moveTo(700, 180);
+    con.lineTo(680, 200);
+    con.lineTo(700, 220);
+    con.lineTo(720, 200);
+    con.closePath();
+    con.stroke();
+
+    // second dimond
+    con.beginPath();
+    con.moveTo(700, 280);
+    con.lineTo(680, 300);
+    con.lineTo(700, 320);
+    con.lineTo(720, 300);
     con.closePath();
     con.stroke();
 }
+
+
 function Clock(props){
 
-    let generator = new ClockTime();
 
     const drawClockImg = () =>{
         let clock = document.getElementById("clockCanvas");
@@ -121,8 +132,12 @@ function Clock(props){
     useEffect(() => {
         let clock = document.getElementById("clockCanvas");
         let con = clock.getContext("2d");
-        testDraw(con);
         draw1(con, 0);
+
+        let generator = new ClockTime(con);
+
+        // graphic to divide the clock into 2 regions 
+        // drawDevider(con)
         generator.drawTime();
 
         drawClockImg();
@@ -141,6 +156,8 @@ function Clock(props){
 
 
     })
+
+
     return <div className="clockDiv">
         <img src="clockBaseImg.png" className="clockImage" alt="clock image"/>
         <canvas id="clockCanvas" width = "1200" height = "500" ></canvas>
