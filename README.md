@@ -2,7 +2,7 @@
 
 # Documentation
 This is my implementation of 2D graphics primitives <br>
-Click [HERE](https://main--keen-raindrop-d78e24.netlify.app/) to take a look.
+Click [HERE](https://646cf7e8beb9812369bb1d06--merry-praline-dac29c.netlify.app/) to take a look.
 
 ## General Overview of Structure
 

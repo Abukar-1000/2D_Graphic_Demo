@@ -188,7 +188,7 @@ class ClockTime {
         this.#context.moveTo(this.#offset+ 325, 360);
         this.#context.lineTo(this.#offset+ 410, 360);
         this.#context.lineTo(this.#offset+ 410, 380);
-        this.#context.lineTo(this.#offset+ 335, 380);
+        this.#context.lineTo(this.#offset+ 345, 380);
         this.#context.closePath();
         this.#context.stroke();
     }
@@ -238,6 +238,17 @@ class ClockTime {
         this.#context.lineTo(this.#offset+ 345, 275);
         this.#context.lineTo(this.#offset+ 345, 353);
         this.#context.lineTo(this.#offset+ 320, 353);
+        this.#context.closePath();
+        this.#context.stroke();
+
+        // bottom part
+        this.#context.beginPath();
+        this.#context.moveTo(this.#offset+ 325, 360);
+        this.#context.lineTo(this.#offset+ 410, 360);
+        this.#context.lineTo(this.#offset+ 410, 380);
+        this.#context.lineTo(this.#offset+ 345, 380);
+        this.#context.closePath();
+        this.#context.stroke();
     }
 
     #draw7(){
@@ -446,11 +457,44 @@ class ClockTime {
         this.#context.stroke();
     }
 
+    // based on the elapsed time, we will draw an arc
+    #drawArcForElapsedTime(time) {
+        // range of circle is 60 minutes and 60 seconds
+        const [maxMinutes, maxSeconds] = [60, 60]; 
+        
+        // get minutes and seconds in both numberic and string forms
+        let minuteStr = time.minutes;
+        let secondStr = time.seconds;
+        let [minutes, seconds] = [parseInt(minuteStr), parseInt(secondStr)];
+
+        let minuteRadians = (minutes/maxMinutes) * 2 * Math.PI; 
+        let SecondsRadians = (seconds/maxSeconds) * 2 * Math.PI;
+
+        this.#context.strokeStyle = "red";
+        this.#context.beginPath();
+        this.#context.arc(200, 220, 50, 0, minuteRadians, false);
+        this.#context.stroke();
+        this.#context.closePath();
+        this.#context.fillText(minuteStr, 180, 230);
+
+
+        // second arc
+        this.#context.beginPath();
+        this.#context.arc(200, 350, 50, 0, SecondsRadians, false);
+        this.#context.stroke();
+        this.#context.closePath();
+        this.#context.fillText(secondStr, 180, 360);
+    }
+
     #clearTimeGraphics(){
         // clear 2 digits to the left of divisor
         this.#context.clearRect(300,120, 350, 300);
         // clear 2 digits to the right of divisor
         this.#context.clearRect(730,120, 330, 300);
+
+        // clear time arcs
+        this.#context.clearRect(120,200, 150, 205);
+
     }
 
     #drawDivider(){
@@ -478,6 +522,8 @@ class ClockTime {
         let currentDate = this.#dateObj.toLocaleDateString();
         this.#context.fillText(currentDate, 100, 140);
     }
+
+    // depricate
     getTimeDifference(startTime){
         const oneSecond = 1000;
         let date = new Date();
@@ -548,7 +594,8 @@ class ClockTime {
         this.#clearTimeGraphics();
         // offset by 300px
         this.#offset = 0;
-        let {minutes, seconds} = this.#convertTime(time);
+        let strTime = this.#convertTime(time);
+        let {minutes, seconds} = strTime;
 
         // draw graphics for minutes
         for (const digit of minutes){
@@ -563,7 +610,10 @@ class ClockTime {
             this.#drawDigit(digit)
             this.#offset += 150;
         }
+
+        this.#drawArcForElapsedTime(strTime)
     }
+
 }
 
 
