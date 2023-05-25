@@ -130,7 +130,8 @@ function Clock(props){
         }
 
 
-        if (state.btnText === "Stop Timer"){
+        let startButtonClicked = state.btnText === "Stop Timer"; 
+        if (startButtonClicked){
             state.intervalID = setInterval(countUp, oneSecond)
         }
 
