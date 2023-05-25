@@ -1,6 +1,6 @@
 
 
-# Documentation
+# Documentation [doc](public/headerIcon.png)
 This is my implementation of 2D graphics primitives <br>
 Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 
@@ -29,7 +29,9 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
       is updated, this creates a digital animation.
 
         
-
+## Credits
+* Icons: 
+    * <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik Flaticon</a>
 
 
 # Thanks For Stopping By 😎
