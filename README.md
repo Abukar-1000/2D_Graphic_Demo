@@ -1,6 +1,6 @@
 
 
-# Documentation ![img](public/headerIcon.png)
+# Documentation <img src="public/headerIcon.png" width="50" height="50">
 This is my implementation of 2D graphics primitives <br>
 Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 
