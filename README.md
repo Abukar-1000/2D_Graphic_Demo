@@ -2,7 +2,7 @@
 
 # Documentation
 This is my implementation of 2D graphics primitives <br>
-Click [HERE](https://646cf7e8beb9812369bb1d06--merry-praline-dac29c.netlify.app/) to take a look.
+Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 
 [View Function Documentaion](src/ducumentation/functions.md)
 
