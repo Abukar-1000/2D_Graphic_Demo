@@ -12,31 +12,6 @@ import ClockTime from "./clockTime";
         Therefore we only clear that section when the timer is stoped.
 */
 
-function drawArc(con, time) {
-    // range of circle is 60 minutes and 60 seconds
-    const [maxMinutes, maxSeconds] = [60, 60]; 
-    
-    let minuteRadians = (30/maxMinutes) * 2 * Math.PI; 
-    let SecondsRadians = (56/maxMinutes) * 2 * Math.PI;
-
-    con.strokeStyle = "red";
-    con.beginPath();
-    con.arc(200, 220, 50, 0, minuteRadians, false);
-    con.stroke();
-    con.closePath();
-
-    con.fillText("XX", 180, 230)
-
-
-    // second arc
-    con.beginPath();
-    con.arc(200, 350, 50, 0, SecondsRadians, false);
-    con.stroke();
-    con.closePath();
-
-    con.fillText("XX", 180, 360)
-}
-
 
 function Clock(props){
 
@@ -61,7 +36,6 @@ function Clock(props){
                 }
             })
 
-            // start timer
 
         } else {
             updateState(prevState => {
@@ -73,7 +47,6 @@ function Clock(props){
                     intervalID: null
                 }   
             })
-            // stop timer
         }
 
     }
@@ -94,9 +67,7 @@ function Clock(props){
         let con = clock.getContext("2d");
         let generator = new ClockTime(con);
 
-        // drawArc(con, 120);
         // graphic to divide the clock into 2 regions 
-        // drawDevider(con)
         generator.drawTime(state.elapsedSeconds);
         drawClockImg();
         
@@ -129,7 +100,7 @@ function Clock(props){
             }
         }
 
-
+        // start timer
         let startButtonClicked = state.btnText === "Stop Timer"; 
         if (startButtonClicked){
             state.intervalID = setInterval(countUp, oneSecond)
