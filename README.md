@@ -27,8 +27,7 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
       we must also update the UI to reflect this change. Once the UI <br>
       is updated, this creates a digital animation.
 
-## High level Overview
-### Logic  &ensp; <img src="public/logic.png" width="25" height="25">
+## Logic  &ensp; <img src="public/logic.png" width="25" height="25">
 * User clicks the `Start Timer`, the only button on screen.
 * This will trigger a state change and cause a loop to begin.
 * In the loop:
@@ -36,7 +35,7 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
         * If so break loop. 
     * We increment the elapsed seconds.
     * Update the UI.
-### Small Nuances  &ensp; <img src="public/nuance.png" width="25" height="25">
+## Small Nuances  &ensp; <img src="public/nuance.png" width="25" height="25">
 * If the user refreshes the page, the loaded image is lost from the DOM.
     * This was due to the `.hidden` css property previously applied.
 * To handle this I:
@@ -49,7 +48,6 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 * Icons: 
     * <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik Flaticon</a>
 * Clock Image:
-    * Licensed fromAdobe Stock
     * <a href="https://stock.adobe.com/Library/urn:aaid:sc:US:d7f9259d-5e63-427c-823d-a217f93a4126?asset_id=281630869">Licensed fromAdobe Stock</a>
 
 
