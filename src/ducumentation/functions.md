@@ -68,7 +68,7 @@
 * This method acts like a map between the private methods previously created.
 * Given a string digit, it will call the corrisponding custom function to <br>
   draw it on the UI.
-### drawTime( digit )
+### `drawTime( digit )`
 * Public method.
 * Given the current amount of elapsed seconds, it:
     * Clears previous regions of intreset using `clearTimeGraphics()` method.
