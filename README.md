@@ -1,12 +1,12 @@
 
 
-# Documentation  &emsp;  &emsp; <img src="public/headerIcon.png" width="25" height="25">
+# Documentation   &emsp; <img src="public/headerIcon.png" width="25" height="25">
 This is my implementation of 2D graphics primitives <br>
 Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 
 ## [View Function/Method Documentaion](src/ducumentation/functions.md)
 
-## Implementation of Requirements  &emsp;  &emsp; <img src="public/implementation.png" width="25" height="25">
+## Implementation of Requirements   &emsp; <img src="public/implementation.png" width="25" height="25">
 * Basic Shapes
     * All the numbers displayed on the timer where drawn onto the canvas to meet this requirement.    
     * I've decided to implement a digital timer, allowing me to experiment with the polygraphic <br>
@@ -28,7 +28,7 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
       is updated, this creates a digital animation.
 
 ## High level Overview
-### Logic   &emsp;  &emsp; <img src="public/logic.png" width="25" height="25">
+### Logic    &emsp; <img src="public/logic.png" width="25" height="25">
 * User clicks the `Start Timer`, the only button on screen.
 * This will trigger a state change and cause a loop to begin.
 * In the loop:
@@ -36,7 +36,7 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
         * If so break loop. 
     * We increment the elapsed seconds.
     * Update the UI.
-### Small Nuances   &emsp;  &emsp; <img src="public/nuance.png" width="25" height="25">
+### Small Nuances    &emsp; <img src="public/nuance.png" width="25" height="25">
 * If the user refreshes the page, the loaded image is lost from the DOM.
     * This was due to the `.hidden` css property previously applied.
 * To handle this I:
@@ -45,7 +45,7 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
     * Re-draw the canvas image after the page has reloaded.
 
         
-## Credits   &emsp;  &emsp; <img src="public/credit.png" width="25" height="25">
+## Credits    &emsp; <img src="public/credit.png" width="25" height="25">
 * Icons: 
     * <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik Flaticon</a>
 * Clock Image:
