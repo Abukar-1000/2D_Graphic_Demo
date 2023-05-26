@@ -523,14 +523,6 @@ class ClockTime {
         this.#context.fillText(currentDate, 100, 140);
     }
 
-    // depricate
-    getTimeDifference(startTime){
-        const oneSecond = 1000;
-        let date = new Date();
-        let elapsed = (date.getTime() - startTime) / oneSecond;
-        return elapsed;
-    }
-
     // converts seconds to minutes:seconds
     #convertTime(number){
         // ! corrisponds to 99:59, this is to prevent an overflow 
