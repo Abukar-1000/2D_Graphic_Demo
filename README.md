@@ -4,10 +4,9 @@
 This is my implementation of 2D graphics primitives <br>
 Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
 
-[View Function Documentaion](src/ducumentation/functions.md)
+## [View Function/Method Documentaion](src/ducumentation/functions.md)
 
-## How the Following Requirements are Implemented
-
+## Implementation of Requirements
 * Basic Shapes
     * All the numbers displayed on the timer where drawn onto the canvas to meet this requirement.    
     * I've decided to implement a digital timer, allowing me to experiment with the polygraphic <br>
@@ -27,6 +26,8 @@ Click [HERE](https://main--merry-praline-dac29c.netlify.app/) to take a look.
     * Lastly for the animation, after the elapsed time is updated <br>
       we must also update the UI to reflect this change. Once the UI <br>
       is updated, this creates a digital animation.
+
+## High level Overview
 
         
 ## Credits
